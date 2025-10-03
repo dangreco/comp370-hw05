@@ -7,7 +7,12 @@ authors = [
     { name = "Dan Greco", email = "me@dangre.co" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "bokeh>=3.8.0",
+    "duckdb>=1.4.0",
+    "numpy>=2.3.3",
+    "pandas>=2.3.3",
+]
 
 [project.scripts]
 hw05 = "hw05:main"

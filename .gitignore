@@ -1,6 +1,9 @@
 /.direnv
 /.venv
 /.zed
+/.in
+/.out
+/.cache
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -218,3 +221,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+/.in

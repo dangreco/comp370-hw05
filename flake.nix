@@ -55,6 +55,12 @@
             };
             destination = "/settings.json";
           };
+
+          libraryPath =
+            with pkgs;
+            lib.makeLibraryPath [
+              stdenv.cc.cc
+            ];
         in
 
         {
@@ -72,7 +78,17 @@
               uv
               ty
               ruff
-              python313
+
+              (python313.withPackages (
+                ps: with ps; [
+                  numpy
+                  pandas
+                  duckdb
+                  jupyter
+                  matplotlib
+                  bokeh
+                ]
+              ))
 
               __zed
             ];
@@ -82,6 +98,7 @@
               rm -rf .zed
               mkdir -p .zed
               cp ${__zed}/settings.json .zed/settings.json
+              export "LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${libraryPath}"
             '';
           };
         };
